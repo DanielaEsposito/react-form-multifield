@@ -1,6 +1,6 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
-
+import { useEffect } from "react";
 function App() {
   const [addPost, setAddPost] = useState({
     title: "",
@@ -30,6 +30,9 @@ function App() {
     setPosts(newPosts);
     setAddPost("");
   };
+  // useEffect(() => {
+  //   checked === true ? alert("stai ") : "";
+  // });
   const handlerDeletePost = (postToDelete) => {
     const updatedPosts = posts.filter((post) => post !== postToDelete);
 
@@ -140,6 +143,12 @@ function App() {
                     <div className="card-body">
                       <h5 className="card-title">{post.title}</h5>
                       <p className="card-text">{post.content}</p>
+                      <div className="delete-button">
+                        <i
+                          className="fa-solid fa-trash-can fa-sm delete"
+                          onClick={() => handlerDeletePost(post)}
+                        ></i>
+                      </div>
                     </div>
                   </div>
                 </div>
