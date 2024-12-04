@@ -1,0 +1,14 @@
+/* UTILS AND RESET*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/*HEADER*/
+.header {
+  background-color: rgb(226, 226, 226);
+}
+
+.delete {
+  color: red;
+}
