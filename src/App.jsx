@@ -5,8 +5,9 @@ function App() {
   const [addPost, setAddPost] = useState({
     title: "",
     img: "",
-    category: "",
+    category: ["natura", "città", "montagna", "urban", "eustorgio"],
     content: "",
+    tags: [],
     published: false,
   });
 
@@ -102,11 +103,14 @@ function App() {
                   <select
                     className="form-select"
                     aria-label="Default select example"
+                    name="category"
                     onChange={handlePostChange}
                   >
                     <option value="">Seleziona una categoria</option>
-                    {posts.map((post, index) => (
-                      <option value={index}>{post.category}</option>
+                    {addPost.category.map((categoryName, index) => (
+                      <option key={index} value={categoryName}>
+                        {categoryName}
+                      </option>
                     ))}
                   </select>
                 </div>
