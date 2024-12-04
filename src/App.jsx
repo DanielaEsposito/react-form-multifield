@@ -1,17 +1,24 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { useEffect } from "react";
+
 function App() {
+  const categories = ["natura", "città", "montagna", "urban", "eustorgio"];
   const [addPost, setAddPost] = useState({
     title: "",
     img: "",
-    category: ["natura", "città", "montagna", "urban", "eustorgio"],
+    category: "",
     content: "",
     tags: [],
     published: false,
   });
-
   const [posts, setPosts] = useState([]);
+
+  // Ciao Daniela! L'errore Uncaught TypeError: addPost.category.map is not a function è dovuto al fatto che stai aggiornando l'intero oggetto addPost
+  //  in modo errato nella funzione handlePostChange. Quando selezioni una categoria, la chiave category viene sovrascritta da una stringa (il valore
+  //   dell'opzione selezionata), ma in origine era un array. Di conseguenza, quando tenti di usare map su una stringa, ottieni quell'errore.
+  //   Per risolvere il problema, puoi aggiornare la funzione handlePostChange in modo che gestisca correttamente i diversi tipi di input, verificando
+  //    se stai modificando un array o una singola proprietà. In alternativa, puoi evitare di sovrascrivere addPost.category se non necessario.
 
   const handlePostChange = (e) => {
     const newValue =
@@ -21,12 +28,14 @@ function App() {
       [e.target.name]: newValue,
     };
     setAddPost(newAddPost);
+    //console.log(addPost.category);
     console.log(newAddPost);
   };
   //console.log(e);
 
   const handlerFormSubmit = (e) => {
     e.preventDefault();
+    //creazione dei post
     const newPosts = [...posts, addPost];
     setPosts(newPosts);
     setAddPost("");
@@ -107,7 +116,7 @@ function App() {
                     onChange={handlePostChange}
                   >
                     <option value="">Seleziona una categoria</option>
-                    {addPost.category.map((categoryName, index) => (
+                    {categories.map((categoryName, index) => (
                       <option key={index} value={categoryName}>
                         {categoryName}
                       </option>
