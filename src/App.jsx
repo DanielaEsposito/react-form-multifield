@@ -44,7 +44,7 @@ function App() {
         <section className="posts py-4">
           <div className="container">
             {/*FORM INPUT  */}
-            <form onSubmit={handlerFormSubmit}>
+            <form onSubmit={handlePostChange}>
               {/*INPUT TITLE */}
               <div className="row">
                 <div className="col-3">
@@ -57,7 +57,7 @@ function App() {
                     name="post-title"
                     id="title"
                     value={addPost.title}
-                    onChange={handlerFormSubmit}
+                    onChange={handlePostChange}
                   />
                 </div>
                 {/*INPUT IMG */}
@@ -71,7 +71,7 @@ function App() {
                     name="post-img"
                     id="img"
                     value={addPost.img}
-                    onChange={handlerFormSubmit}
+                    onChange={handlePostChange}
                   />
                 </div>
                 {/*INPUT CONTENT */}
@@ -85,23 +85,25 @@ function App() {
                     name="post-content"
                     id="content"
                     value={addPost.content}
-                    onChange={handlerFormSubmit}
+                    onChange={handlePostChange}
                   />
                 </div>
                 {/*SELECT CATEGORY*/}
                 {/*CHECKBOX PUBLISHED */}
                 <div className="col-3">
                   <label htmlFor="post-published" className="form-label">
-                    Contenuto
+                    Published
                   </label>
-                  <input
-                    className="form-control mb-3"
-                    checked={addPost.published}
-                    type="checkbox"
-                    name="published"
-                    id="post-published"
-                    onChange={handlerFormSubmit}
-                  />
+                  <div>
+                    <input
+                      className=" mb-3"
+                      checked={addPost.published}
+                      type="checkbox"
+                      name="published"
+                      id="post-published"
+                      onChange={handlePostChange}
+                    />
+                  </div>
                 </div>
               </div>
               <button className="btn btn-primary">Cerca</button>
