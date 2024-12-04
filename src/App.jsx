@@ -13,9 +13,11 @@ function App() {
   const [posts, setPosts] = useState([]);
 
   const handlePostChange = (e) => {
+    const newValue =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
     const newAddPost = {
       ...addPost,
-      [e.target.name]: e.target.value,
+      [e.target.name]: newValue,
     };
     setAddPost(newAddPost);
     console.log(newAddPost);
@@ -89,6 +91,23 @@ function App() {
                   ></textarea>
                 </div>
                 {/*SELECT CATEGORY*/}
+
+                <div className="col-3">
+                  <label htmlFor="post-category" className="form-label">
+                    Categorie
+                  </label>
+                  <select
+                    className="form-select"
+                    aria-label="Default select example"
+                    onChange={handlePostChange}
+                  >
+                    <option value="">Seleziona una categoria</option>
+                    {posts.map((post, index) => (
+                      <option value={index}>{post.category}</option>
+                    ))}
+                  </select>
+                </div>
+
                 {/*CHECKBOX PUBLISHED */}
                 <div className="col-3">
                   <label htmlFor="post-published" className="form-label">
