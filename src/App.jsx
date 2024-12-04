@@ -156,6 +156,7 @@ function App() {
                     <div className="card-body">
                       <h5 className="card-title">{post.title}</h5>
                       <p className="card-text">{post.content}</p>
+                      <p>{post.category}</p>
                       <div className="delete-button">
                         <i
                           className="fa-solid fa-trash-can fa-sm delete"
