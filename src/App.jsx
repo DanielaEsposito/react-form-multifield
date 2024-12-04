@@ -3,21 +3,22 @@ import reactLogo from "./assets/react.svg";
 
 function App() {
   const [addPost, setAddPost] = useState({
-    title: "title",
+    title: "",
     img: "",
     category: "",
     content: "",
-    published: "",
+    published: false,
   });
 
   const [posts, setPosts] = useState([]);
 
   const handlePostChange = (e) => {
-    const newPost = {
-      ...posts,
+    const newAddPost = {
+      ...addPost,
       [e.target.name]: e.target.value,
     };
-    setAddPost(newPost);
+    setAddPost(newAddPost);
+    console.log(newAddPost);
   };
   //console.log(e);
 
@@ -44,7 +45,7 @@ function App() {
         <section className="posts py-4">
           <div className="container">
             {/*FORM INPUT  */}
-            <form onSubmit={handlePostChange}>
+            <form onSubmit={handlerFormSubmit}>
               {/*INPUT TITLE */}
               <div className="row">
                 <div className="col-3">
@@ -54,7 +55,7 @@ function App() {
                   <input
                     className="form-control"
                     type="text"
-                    name="post-title"
+                    name="title"
                     id="title"
                     value={addPost.title}
                     onChange={handlePostChange}
@@ -62,31 +63,30 @@ function App() {
                 </div>
                 {/*INPUT IMG */}
                 <div className="col-3">
-                  <label htmlFor="img" className="form-label">
+                  <label htmlFor="post-img" className="form-label">
                     Immagine
                   </label>
                   <input
                     className="form-control mb-4"
                     type="text"
-                    name="post-img"
-                    id="img"
+                    name="img"
+                    id="post-img"
                     value={addPost.img}
                     onChange={handlePostChange}
                   />
                 </div>
                 {/*INPUT CONTENT */}
                 <div className="col-3">
-                  <label htmlFor="content" className="form-label">
+                  <label htmlFor="post-content" className="form-label">
                     Contenuto
                   </label>
-                  <input
+                  <textarea
                     className="form-control mb-3"
-                    type="text-area"
-                    name="post-content"
-                    id="content"
+                    name="content"
+                    id="post-content"
                     value={addPost.content}
                     onChange={handlePostChange}
-                  />
+                  ></textarea>
                 </div>
                 {/*SELECT CATEGORY*/}
                 {/*CHECKBOX PUBLISHED */}
@@ -115,22 +115,14 @@ function App() {
             <h2 className="post-list-title"> Post List</h2>
             <div className="row row-cols-3">
               {posts.map((post) => (
-                <div className="col">
+                <div key={post.title} className="col">
                   <div className="card">
-                    <img src="" className="card-img-top" alt="" />
+                    <img src={post.img} className="card-img-top" alt="" />
                     <div className="card-body">
                       <h5 className="card-title">{post.title}</h5>
-                      <p className="card-text"></p>
-                      <a href="#" className="btn btn-primary"></a>
+                      <p className="card-text">{post.content}</p>
                     </div>
                   </div>
-                  {/* <div className="card" key={post}>
-                    {post}{" "}
-                    <i
-                      className="fa-solid fa-trash-can fa-sm delete"
-                      onClick={() => handlerDeletePost(post)}
-                    ></i>
-                  </div> */}
                 </div>
               ))}
             </div>
