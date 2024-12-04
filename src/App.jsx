@@ -2,22 +2,24 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 
 function App() {
-  const [addPost, setAddPost] = useState("");
+  const [addPost, setAddPost] = useState({
+    title: "title",
+    img: "",
+    category: "",
+    content: "",
+    published: "",
+  });
 
-  const [posts, setPosts] = useState([
-    {
-      title: "title",
-      img: "",
-      category: "",
-      content: "",
-      published: "",
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
 
-  const handleInputChange = (e) => {
-    setAddPost(e.target.value);
-    //console.log(e);
+  const handlePostChange = (e) => {
+    const newPost = {
+      ...posts,
+      [e.target.name]: e.target.value,
+    };
+    setAddPost(newPost);
   };
+  //console.log(e);
 
   const handlerFormSubmit = (e) => {
     e.preventDefault();
@@ -50,12 +52,12 @@ function App() {
                     Titolo
                   </label>
                   <input
-                    className="form-control mb-3"
+                    className="form-control"
                     type="text"
                     name="post-title"
                     id="title"
-                    value={posts.title}
-                    onChange={handleInputChange}
+                    value={addPost.title}
+                    onChange={handlerFormSubmit}
                   />
                 </div>
                 {/*INPUT IMG */}
@@ -64,12 +66,12 @@ function App() {
                     Immagine
                   </label>
                   <input
-                    className="form-control mb-3"
+                    className="form-control mb-4"
                     type="text"
                     name="post-img"
                     id="img"
-                    value={posts.img}
-                    onChange={handleInputChange}
+                    value={addPost.img}
+                    onChange={handlerFormSubmit}
                   />
                 </div>
                 {/*INPUT CONTENT */}
@@ -82,8 +84,8 @@ function App() {
                     type="text-area"
                     name="post-content"
                     id="content"
-                    value={posts.content}
-                    onChange={handleInputChange}
+                    value={addPost.content}
+                    onChange={handlerFormSubmit}
                   />
                 </div>
                 {/*SELECT CATEGORY*/}
@@ -94,11 +96,11 @@ function App() {
                   </label>
                   <input
                     className="form-control mb-3"
-                    checked={posts.published}
+                    checked={addPost.published}
                     type="checkbox"
                     name="published"
                     id="post-published"
-                    onChange={handleInputChange}
+                    onChange={handlerFormSubmit}
                   />
                 </div>
               </div>
