@@ -7,8 +7,37 @@
 /*HEADER*/
 .header {
   background-color: rgb(226, 226, 226);
+  height: 100px;
+  padding: 20px;
+}
+/*MAIN form */
+.form-label {
+  font-weight: 600;
+}
+
+/*CARD*/
+
+.card-img-container {
+  overflow: hidden;
+  height: 200px;
+}
+/* delete button*/
+.delete-button {
+  cursor: pointer;
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+}
+.delete-button:hover {
+  border: 1px solid red;
 }
 
 .delete {
   color: red;
+  position: absolute;
+  right: 8px;
+  bottom: 14px;
 }

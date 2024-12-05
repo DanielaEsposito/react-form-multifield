@@ -126,7 +126,7 @@ function App() {
 
                 {/*CHECKBOX PUBLISHED */}
                 <div className="col-3">
-                  <label htmlFor="post-published" className="form-label">
+                  <label htmlFor="post-published" className="form-label ">
                     Published
                   </label>
                   <div>
@@ -148,21 +148,27 @@ function App() {
         <section className="post-list">
           <div className="container">
             <h2 className="post-list-title"> Post List</h2>
-            <div className="row row-cols-3">
+            <div className="row row-cols-3 ">
               {posts.map((post) => (
                 <div key={post.title} className="col">
                   <div className="card">
-                    <img src={post.img} className="card-img-top" alt="" />
+                    <div className="card-img-container">
+                      <img
+                        src={post.img}
+                        className="card-img-top img-fluid img-post"
+                        alt=""
+                      />
+                    </div>
                     <div className="card-body">
                       <h5 className="card-title">{post.title}</h5>
                       <p className="card-text">{post.content}</p>
                       <p>{post.category}</p>
-                      <div className="delete-button">
+                      <span className="delete-button">
                         <i
                           className="fa-solid fa-trash-can fa-sm delete"
                           onClick={() => handlerDeletePost(post)}
                         ></i>
-                      </div>
+                      </span>
                     </div>
                   </div>
                 </div>
