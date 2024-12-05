@@ -5,14 +5,29 @@
   padding: 0;
 }
 /*HEADER*/
+.wrapper {
+  height: 100vh;
+}
 .header {
-  background-color: rgb(226, 226, 226);
+  background-image: linear-gradient(
+    to right,
+    rgb(190, 69, 174),
+    rgb(6, 87, 194)
+  );
+  color: white;
   height: 100px;
   padding: 20px;
 }
+.header h1 {
+  font-weight: 700;
+}
+
 /*MAIN form */
 .form-label {
   font-weight: 600;
+  border: 2px solid rgba(6, 87, 194, 0.685);
+  border-radius: 5px;
+  padding: 4px 9px;
 }
 
 /*CARD*/
